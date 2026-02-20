@@ -10,7 +10,7 @@ from sqlalchemy.ext.asyncio import (
 from sqlalchemy.orm import declarative_base
 from typing import AsyncGenerator
 
-# ---- Load .env from project root ----
+# -- Load .env from project root --
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
 
