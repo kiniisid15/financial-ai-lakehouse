@@ -10,11 +10,9 @@ from sqlalchemy.ext.asyncio import (
 from sqlalchemy.orm import declarative_base
 from typing import AsyncGenerator
 
-
 # ---- Load .env from project root ----
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
-
 
 # ---- Build Database URL ----
 DATABASE_URL = (
@@ -24,11 +22,8 @@ DATABASE_URL = (
     f"localhost:5433/"
     f"{os.getenv('POSTGRES_DB')}"
 )
-
-
 # ---- Async Engine ----
 engine = create_async_engine(DATABASE_URL, echo=True)
-
 
 # ---- Session Factory ----
 AsyncSessionLocal = async_sessionmaker(
@@ -37,10 +32,8 @@ AsyncSessionLocal = async_sessionmaker(
     expire_on_commit=False,
 )
 
-
 # ---- Base for Models ----
 Base = declarative_base()
-
 
 # ---- Dependency Helper ----
 async def get_session() -> AsyncGenerator[AsyncSession, None]:
