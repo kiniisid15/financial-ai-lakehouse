@@ -22,6 +22,7 @@ class Price(Base):
         DateTime(timezone=True), server_default=func.now(), nullable=False
     )
 
+
 class News(Base):
     __tablename__ = "news"
 
