@@ -11,7 +11,6 @@ if __package__ in (None, ""):
 from app.database import Base, engine
 from app import models  # noqa: F401 - ensures models are imported before create_all
 
-
 async def create_tables() -> None:
     async with engine.begin() as conn:
         await conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
