@@ -22,7 +22,9 @@ logger = logging.getLogger(__name__)
 
 
 def load_tickers() -> list[str]:
-    load_dotenv(Path(__file__).resolve().parent / ".env")
+    project_root = Path(__file__).resolve().parent
+    env_path = project_root / ".env"
+    load_dotenv(env_path)
     raw = os.getenv("TICKERS", "")
     return [ticker.strip().upper() for ticker in raw.split(",") if ticker.strip()]
 
@@ -316,6 +318,7 @@ async def main() -> None:
     logger.info("startup")
 
     tickers = load_tickers()
+    print("Loaded tickers:", tickers)
 
     if not tickers:
         logger.error("no tickers configured in .env")
